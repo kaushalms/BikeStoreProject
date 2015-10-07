@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+@{
+    ViewBag.Title = "InventoryDetails";
+}
+
+<h2>Store: @Model.Name</h2>
+
+<div class="Store">
+    <table class="Store">
+        @foreach (var inventory in Model.StoreInventory)
+        {
+            <tr>
+              
+                <td>
+                    <p>
+                        <em>Brand:</em>
+                        @inventory.Brand
+                    </p>
+                    <p>
+                        <em>Model:</em>
+                        @inventory.Model
+                    </p>
+                    <p>
+                        <em>Description:</em>
+                        @inventory.Description
+                    </p>
+                    <p>
+                        <em>Price:</em>
+                        @String.Format("{0:F}", inventory.RecSellPrice)
+                    </p>
+                    <p class="button">
+                        @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = inventory.SerialNumber }, "")
+                    </p>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
